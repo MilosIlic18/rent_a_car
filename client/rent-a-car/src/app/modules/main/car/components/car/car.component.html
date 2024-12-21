@@ -1,0 +1,30 @@
+
+<div class="row">
+  <form class="form-inline" #f="ngForm" (ngSubmit)="filter(f)">
+
+   <select class="form-select" aria-label="Default select example" id="h" name="cat"[(ngModel)]="catName" #cat="ngModel" ngModel>
+      <option selected="selected" disabled="disabled">Izaberi kategoriju</option>
+        <option *ngFor="let option of catList" [value]="option.value">{{option.name}}</option>
+    </select>
+    <select class="form-select" aria-label="Default select example" id="h" [(ngModel)]="fuelName" name="fuel" #fuel="ngModel" ngModel>
+      <option selected="selected" disabled="disabled">Izaberi vrstu goriva</option>
+      <option *ngFor="let option of fuelList" value="{{option.value}}">{{option.name}}</option>
+    </select>
+  
+    <button type="submit" class="btn btn-primary my-1" style="margin-right: 5px;">Primeni filter</button>
+    <div  class="btn btn-primary my-1" (click)="resetFilter()">Resetuj filter</div>
+  </form>
+</div>
+
+
+<div class="row row-cols-4">
+  <div *ngFor="let car of cars" class="col mb-2">
+    <div  class="card" >
+      <img class="card-img-top" [src]="car.imagePath" alt="Card image cap" style="height: 200px;">
+      <div class="card-body">
+        <p class="card-text text-center">
+          <a class="text-danger text-bold font-weight-bold" style="text-decoration: none;" [routerLink]="[car.carsId,'detail']">{{car.price}} eur/dan</a></p>
+      </div>
+    </div>
+  </div>
+</div>

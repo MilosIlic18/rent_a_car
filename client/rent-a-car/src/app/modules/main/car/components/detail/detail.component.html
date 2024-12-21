@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col" >
+        <img [src]="car.imagePath" style="width:500px;height:400px;display:block;margin:auto;" alt="Greska">
+    </div>
+    <div class="col">
+        <h4 class="text-danger display-5">Opis</h4>
+        <p>
+            Model: {{car.brand}}<br>
+            Kategorija: {{car.category}}<br>
+            Vrsta menjaca: {{car.transmission}}<br>
+            Vrsta goriva: {{car.fuel}}<br>
+            Cena: {{car.price}} eur/dan<br>
+            <a class="text-align-center mt-2" style="text-decoration: none;" routerLink="../../">Vratite se</a>
+        </p>
+        <form class="form-inline" #f="ngForm" (ngSubmit)="reservation(f)">
+            <div class="row">
+                <div id="i">
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="h" placeholder="Unesite lokaciju preuzimanja" name="locs" #locs="ngModel" ngModel>
+                </div>
+                <div id="i">
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="h" placeholder="Unesite lokaciju vracanja" name="locend" #locend="ngModel" ngModel>
+                </div>
+            </div>
+            <div class="row">
+                <div  id="i">
+                    <div class="small">Datum pocetka iznajmljivanja</div>
+                    <input type="datetime-local" class="form-control mb-2 mr-sm-2" name="datestart" #datestart="ngModel" ngModel>
+                </div>
+                <div  id="i">
+                    <div class="small">Datum zavrsetka iznajmljivanja</div>
+                    <input type="datetime-local" class="form-control mb-2 mr-sm-2" name="dateend" #dateend="ngModel" ngModel>
+                </div>
+            </div>
+            <div class="row">
+                <div id="i">
+                    <div class="small">Datum isteka Vase vozacke dozvole</div>
+                    <input type="datetime-local" class="form-control mb-2 mr-sm-2" name="expirelicense" #expirelicense="ngModel" ngModel>
+                </div>
+                <div id="i">
+                    <div class="small">Godine starosti vozaca</div>
+                    <input type="number" class="form-control mb-2 mr-sm-2"  name="age" #datestart="ngModel" ngModel>
+                </div>
+                
+            </div>
+            <p class="small text-danger">{{msg}}</p>
+            <button  class="btn btn-success mt-3" style="float: right;" type="submit" [disabled]="enbtn">Rezervisi</button>
+            
+        </form>
+    </div>
+</div>
+<div class="row">
+    Recenzije: {{car.comments.length}}
+    <div class="row card p-1 mt-1" *ngFor="let comment of car.comments">
+        <div class="card-body">{{comment.description}}</div>
+        <div class="text-end opacity-75 text-secondary">{{comment.created_at | date:'YYYY.MM.dd. HH:mm'}}</div>
+    </div>
+    <form class="mt-3" #fo="ngForm" (ngSubmit)="addComment(fo)">
+        <label for="exampleFormControlTextarea1" class="form-label">Unesite komentar</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" #description="ngModel" ngModel></textarea>
+        <button  class="btn btn-success mt-3" style="float: right;" type="submit" [disabled]="enbtn">Dodaj komentar</button>
+    </form>
+
+</div>

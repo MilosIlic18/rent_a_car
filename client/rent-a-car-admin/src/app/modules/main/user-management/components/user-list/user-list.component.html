@@ -1,0 +1,41 @@
+<div class="w-25">
+    <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="Pretraga po jmbg-u" aria-label="Search" aria-describedby="search-addon" (keyup)="onKey($event)"/>
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="bi bi-search"></i>
+        </span>
+    </div>
+    </div>
+    <table class="mt-4 table table-striped" *ngIf="users">
+        <thead>
+          <tr>
+            <th scope="col">Ime</th>
+            <th scope="col">Prezime</th>
+            <th scope="col">JMBG</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Rezervacije</th>
+    
+          </tr>
+        </thead>
+        <tbody *ngIf="users.length>0">
+          <tr *ngFor="let user of users">
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.uid}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td><a [routerLink]="[user.usersId,'reservation']">Pregled</a></td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="users.usersId">
+            <tr>
+              <th scope="row">{{users.usersId}}</th>
+              <td>{{users.created_at | date: 'dd.MM.yyyy. H:mm'}}</td>
+              <td>{{users.firstname}}</td>
+              <td>{{users.lastname}}</td>
+              <td>{{users.uid}}</td>
+              <td>{{users.email}}</td>
+            </tr>
+          </tbody>
+      </table>

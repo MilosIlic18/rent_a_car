@@ -1,0 +1,29 @@
+<header class="py-3 mb-3 border-bottom bg-dark shadow">
+    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+      <h3 class="w-40 link-underline link-underline-opacity-0 link-light" routerLink=""><a> Rent a car </a></h3>
+       
+
+      <div class="d-flex align-items-center">
+        <div class="w-100 me-3">
+          <!--<input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          --></div>
+
+        <div class="flex-shrink-0 dropdown">
+          <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            {{username}}
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+            <li *ngIf="username==='Prijava'"><a class="dropdown-item" routerLink="auth">Prijava</a></li>
+            <li *ngIf="username!=='Prijava'"><a class="dropdown-item" (click)="signOut()">Odjava</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container mb-3">
+    <div class="row">
+      <main class="col-md-12 ms-sm-auto col-lg-12 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>

@@ -1,0 +1,77 @@
+
+############################ INSTRUKCIJE ############################
+
+
+POTREBNO JE IMATI ODGOVARAJUCU PODRSKU NA RACUNARU NA KOME PODIZETE OVAJ SISTEM
+
+MORATE IMATI INSTALIRANU PODRSKU ZA NodeJS, Angular, NestJS
+
+
+############## SERVERSKI DEO ##############
+
+
+POTREBNO JE DODATI .env datoteku u CAR SERVICE, RESERVATION SERVICE i USER SERVICE sa navedenim instrukcijama:
+
+#### CAR SERVICE ####
+
+DB_HOST          = ""
+DB_PORT          = 
+DB_NAME          = ""
+DB_USERNAME      = ""
+DB_PASSWORD      = ""
+
+
+#### RESERVATION SERVICE ####
+
+DB_HOST         = ""
+DB_PORT         = 
+DB_NAME         = ""
+DB_USERNAME     = ""
+DB_PASSWORD     = ""
+
+MAIL_USERNAME   = ""
+MAIL_PASSWORD   = ""
+MAIL_HOSTNAME   = "smtp.gmail.com"
+MAIL_SENDER     = ""
+
+MAIL_NOTIFICATION = ""
+
+
+#### USER SERVICE ####
+
+DB_HOST         = ""
+DB_PORT         = 
+DB_NAME         = ""
+DB_USERNAME     = ""
+DB_PASSWORD     = ""
+
+HASH_NUM        = 10
+
+
+#######################################################
+
+
+POTREBNO JE KREIRATI BAZU PODATAKA NA SERVERU BAZE PODATAKA I VODITI RACUNA DA SE IMENA BAZA POKLAPAJU SA DB_NAME U PROTIVNOM CE DOCI DO GRESKE, S TIM STO JE DB_NAME U SVAKOM PROJEKTU ZASEBNA
+
+potom je potrebno u svakom zasebnom projektu uraditi sledece:
+
+komandom cd doci do projekta [ npr. cd Desktop/server/api-gateway ]
+
+potom instalirati zavisnosti za svaki pojedinacni projekat 
+komandom npm i
+
+potom komandom npm run start pokrenuti projekte zasebno
+
+
+############## KLIJENTSKI DEO ##############
+
+
+komandom cd doci do projekta [ npr. cd Desktop/client/rent-a-car ]
+
+komanda za instalaciju zavisnosti - npm i
+
+komanda za pokretanje aplikacija - ng s
+
+
+APLIKACIJU ZA ADMISTRATIORE OSLUSKIVATI NA SLEDECOJ ADRESI http://localhost:4201/
+APLIKACIJU ZA GOSTE I KLIJENTE OSLUSKIVATI NA SLEDECOJ ADRESI http://localhost:4200/

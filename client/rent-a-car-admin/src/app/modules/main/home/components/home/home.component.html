@@ -1,0 +1,23 @@
+<h4>Dostupni automobili</h4>
+<div class="mb-1">
+  </div>
+      <table class="mt-4 table table-striped" *ngIf="cars">
+          <thead>
+            <tr>
+              <th scope="col">Brend</th>
+              <th scope="col">Slika</th>
+              <th scope="col">Kategorija</th>
+              <th scope="col">Cena(eur)/dan</th>
+              <th scope="col">Predjeni kilometri</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let car of cars">
+              <td>{{car.brand}}</td>
+              <td><img [src]="car.imagePath" style="width:40px;height: 40px; " alt="Greska"></td>
+              <td>{{car.category}}</td>
+              <td>{{car.price}}</td>
+              <td>{{car.mileage}}</td>
+            </tr>
+          </tbody>
+        </table>

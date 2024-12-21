@@ -1,0 +1,44 @@
+
+<div class="container w-25">
+  <div class="row d-flex justify-content-center">
+    <form #f="ngForm" class="mt-5" (ngSubmit)="onSubmit(f)">
+    <div class="h4 text-center m-4">Unesite datume</div>
+      <div class="text-danger small p-1 text-center"></div>
+      <div class="form-floating form-floating-sm mt-1">
+          <input class="form-control form-control-sm" name="startDate" #startDate="ngModel" ngModel placeholder="startDate" required type="date">
+          <label for="">Pocetak vazenja</label>
+          <div class="text-danger small" *ngIf="startDate.touched && startDate.invalid">
+              <div *ngIf="startDate.errors?.['required']">Polje mora biti popunjeno</div>
+          </div>
+        </div>
+        <div class="form-floating form-floating-sm mt-1">
+            <input class="form-control form-control-sm" name="expireDate" #expireDate="ngModel" ngModel placeholder="expireDate" required type="date">
+            <label for="">Zavrsetak vazenja</label>
+            <div class="text-danger small" *ngIf="expireDate.touched && expireDate.invalid">
+                <div *ngIf="expireDate.errors?.['required']">Polje mora biti popunjeno</div>
+            </div>
+          </div>
+        <div class="mt-1">
+          <input type="submit" value="Unesite" class="btn btn-sm btn-primary" [disabled]="f.invalid">
+      </div>
+    </form> 
+  </div>
+</div>
+
+
+<table class="mt-4 table table-striped" *ngIf="registations">
+        <thead>
+          <tr>
+            <th scope="col">Pocetak vazenja registracije</th>
+            <th scope="col">Prestanak vazenja registracije</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registation of registations">
+            <td>{{registation.startDate |  date: 'dd.MM.yyyy.'}}</td>
+            <td>{{registation.expireDate |  date: 'dd.MM.yyyy.'}}</td>
+            
+          </tr>
+        </tbody>
+        
+      </table>

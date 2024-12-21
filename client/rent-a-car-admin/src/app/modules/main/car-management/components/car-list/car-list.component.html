@@ -1,0 +1,35 @@
+
+<div class="mb-1">
+  <div class="btn btn-sm btn-primary" routerLink="add">Unesite podatke automobila</div>
+</div>
+    <table class="mt-4 table table-striped" *ngIf="cars">
+        <thead>
+          <tr>
+            <th scope="col">Brend</th>
+            <th scope="col">Slika</th>
+            <th scope="col">Kategorija</th>
+            <th scope="col">Tip menjaca</th>
+            <th scope="col">Tip goriva</th>
+
+            <th scope="col">Cena(eur)/dan</th>
+            <th scope="col">Predjeni kilometri</th>
+            <th scope="col">Stutus</th>
+            <th scope="col">Registracije</th>
+            <th scope="col">Azuriraj</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let car of cars">
+            <td>{{car.brand}}</td>
+            <td><img [src]="car.imagePath" style="width:40px;height: 40px; " alt="Greska"></td>
+            <td>{{car.category}}</td>
+            <td>{{car.transmission}}</td>
+            <td>{{car.fuel}}</td>
+            <td>{{car.price}}</td>
+            <td>{{car.mileage}}</td>
+            <td>{{car.is_available?'Dostupan':'Zauzet'}}</td>
+            <td><a [routerLink]="[car.carsId,'registration']" > Pregled</a></td>
+            <td><a [routerLink]="[car.carsId,'edit']" class="btn btn-sm btn-success"> Azuriraj</a></td>
+          </tr>
+        </tbody>
+      </table>

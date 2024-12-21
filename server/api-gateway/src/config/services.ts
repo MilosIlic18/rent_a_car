@@ -1,0 +1,3 @@
+export const USER_SERVICE        = 'USER_SERVICES'
+export const CAR_SERVICE         = 'CAR_SERVICES'
+export const RESERVATION_SERVICE = 'RESERVATION_SERVICES'

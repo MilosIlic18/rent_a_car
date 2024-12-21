@@ -1,0 +1,26 @@
+<div class="w-25">
+    Broj rezervacija: {{reservations.length}}
+</div>
+<table class="mt-4 table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Lokacija preuzimanja</th>
+            <th scope="col">Lokacija vracanja</th>
+            <th scope="col">Automobil</th>
+            <th scope="col">Vreme preuzimanja</th>
+            <th scope="col">Vreme vracanja</th>
+            <th scope="col">Istek vazenja vozacke dozvole</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="reservations.length>0">
+          <tr *ngFor="let reservation of reservations">
+            <td>{{reservation.locationStart}}</td>
+            <td>{{reservation.locationEnd}}</td>
+            <td>{{reservation.carTitle}}</td>
+            <td>{{reservation.startDate |  date: 'dd.MM.yyyy. H:mm'}}</td>
+            <td>{{reservation.endDate |  date: 'dd.MM.yyyy. H:mm'}}</td>
+            <td>{{reservation.dateExpireLicense |  date: 'dd.MM.yyyy. H:mm'}}</td>
+          </tr>
+        </tbody>
+        
+      </table>

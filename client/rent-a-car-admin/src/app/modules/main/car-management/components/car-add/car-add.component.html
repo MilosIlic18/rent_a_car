@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row d-flex justify-content-center align-items-center">
+  <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+  <form #f="ngForm" class="mt-5 " (ngSubmit)="onSubmit(f)"   enctype="multipart/form-data">
+      <div class="h4 text-center m-4">Unesite automobil</div>
+      <div class="text-danger small p-1 text-center">{{message}}</div>
+      <div class="form-floating form-floating-sm mt-1">
+          <input class="form-control form-control-sm" name="brand" #brand="ngModel" ngModel placeholder="brand" required pattern=".{4,}">
+          <label for="">Marka</label>
+          <div class="text-danger small" *ngIf="brand.touched && brand.invalid">
+              <div *ngIf="brand.errors?.['required']">Polje marka mora biti popunjeno</div>
+              <div *ngIf="brand.errors?.['pattern']">Polje marka nesme biti krace od cetiri karaktera</div>
+          </div>
+      </div>
+      <div class="form-floating form-floating-sm mt-1">
+        <input class="form-control form-control-sm" name="price" type="number" #price="ngModel" ngModel placeholder="Cena" required pattern="[0-9]{2,}">
+        <label for="">Unesite cenu</label>
+        <div class="text-danger small" *ngIf="price.touched && price.invalid">
+            <div *ngIf="price.errors?.['required']">Polje cena mora biti popunjeno</div>
+            <div *ngIf="price.errors?.['pattern']">Polje cena krace od dve cifra</div>
+        </div>
+    </div>
+    <div class="form-floating form-floating-sm mt-1">
+      <input class="form-control form-control-sm" name="mileage" type="number" #mileage="ngModel" ngModel placeholder="Cena" required pattern="[0-9]{2,}">
+      <label for="">Unesite kilometrazu</label>
+      <div class="text-danger small" *ngIf="mileage.touched && mileage.invalid">
+          <div *ngIf="mileage.errors?.['required']">Polje cena mora biti popunjeno</div>
+          <div *ngIf="mileage.errors?.['pattern']">Polje marka krace od dve cifra</div>
+      </div>
+  </div>
+  <div class="form-control mt-1">
+    
+    <input class="form-control form-control-sm" name="image" type="file" #fn #image="ngModel" ngModel placeholder="Odaberite sliku" (change)="selectFile($event)" style="display: none" required  >
+    <div class="btn btn-sm" (click)="fn.click()">Odaberi sliku</div>
+    <label for="">{{filen===''?'Odaberi sliku':filen}}</label>
+    <div class="text-danger small" *ngIf="image.touched && image.invalid">
+        <div *ngIf="image.errors?.['required']">Polje slika je obavezno</div>
+    </div>
+</div>
+    <div class="form-floating form-floating-sm mt-1">
+      <select class="form-select " #category="ngModel" [(ngModel)]="catName" name="category" ngModel required >
+        <option selected="selected" disabled="disabled">Odaberite kategoriju automobila</option>
+        <option *ngFor="let option of catList" [value]="option.value">{{option.name}}</option>
+      </select>
+      <div class="text-danger small" *ngIf="category.touched && category.invalid">
+    </div>
+  </div>
+  <div class="form-floating form-floating-sm mt-1">
+    <select class="form-select " #fuel="ngModel" [(ngModel)]="fuelName" name="fuel" ngModel required>
+      <option selected="selected" disabled="disabled">Odaberite vrstu gorivo</option>
+      <option *ngFor="let option of fuelList" value="{{option.value}}">{{option.name}}</option>
+    </select>
+    <div class="text-danger small" >
+      <div ></div>
+  </div>
+</div>
+<div class="form-floating form-floating-sm mt-1">
+  <select class="form-select " #transmission="ngModel" [(ngModel)]="transmissionName" name="transmission" ngModel required>
+    <option selected="selected" disabled="disabled">Odaberi vrstu prenosa</option>
+    <option *ngFor="let option of transmissionList" value="{{option.value}}">{{option.name}}</option>
+  </select>
+  <div class="text-danger small" >
+    <div ></div>
+</div>
+</div>
+      <div class="mt-1">
+          <input type="submit" value="Dodaj automobil" class="btn btn-sm btn-primary me-2" 
+          [disabled]="
+          category.value==='Odaberite kategoriju automobila' 
+          || fuel.value==='Odaberite vrstu gorivo'          
+          || transmission.value ==='Odaberi vrstu prenosa'
+          || f.invalid">
+          <a class="btn btn-sm btn-primary" routerLink="../../">Odustani</a>
+      </div>
+  </form>
+  </div>
+  </div>
+  </div>

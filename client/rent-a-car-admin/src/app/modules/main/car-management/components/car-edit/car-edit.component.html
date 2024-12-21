@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <form class="mt-5 " [formGroup]="carForm" (ngSubmit)="onSubmit()">
+        <div class="h4 text-center m-4">Azuriraj automobil</div>
+        <div class="text-danger small p-1 text-center">{{message}}</div>
+        <div class="form-floating form-floating-sm mt-1">
+            <input class="form-control form-control-sm" formControlName="brand" required pattern=".{4,}">
+            <label for="">Marka</label>
+            <div class="text-danger small" *ngIf="carForm.get('brand')?.invalid && carForm.get('brand')?.dirty">
+                <div *ngIf="carForm.get('brand')?.errors?.['required']">Polje marka mora biti popunjeno</div>
+                <div *ngIf="carForm.get('brand')?.errors?.['pattern']">Polje marka nesme biti krace od cetiri karaktera</div>
+            </div>
+        </div>
+        <div class="form-floating form-floating-sm mt-1">
+          <input class="form-control form-control-sm" type="number" formControlName="price" required pattern="[0-9]{2,}">
+          <label for="">Unesite cenu</label>
+          <div class="text-danger small" *ngIf="carForm.get('price')?.invalid && carForm.get('price')?.dirty">
+              <div *ngIf="carForm.get('price')?.errors?.['required']">Polje cena mora biti popunjeno</div>
+              <div *ngIf="carForm.get('brand')?.errors?.['pattern']">Polje cena krace od dve cifra</div>
+          </div>
+      </div>
+      <div class="form-floating form-floating-sm mt-1">
+        <input class="form-control form-control-sm" type="number" formControlName="mileage" required pattern="[0-9]{2,}">
+        <label for="">Unesite kilometrazu</label>
+        <div class="text-danger small" *ngIf="carForm.get('mileage')?.invalid && carForm.get('mileage')?.dirty">
+            <div *ngIf="carForm.get('mileage')?.errors?.['required']">Polje cena mora biti popunjeno</div>
+            <div *ngIf="carForm.get('mileage')?.errors?.['pattern']">Polje marka krace od dve cifra</div>
+        </div>
+    </div>
+      <div class="form-floating form-floating-sm mt-1">
+        <select class="form-select" formControlName="category" >
+          <option >Odaberite kategoriju automobila</option>
+          <option *ngFor="let option of catList" [ngValue]="option.value">{{option.name}}</option>
+        </select>
+        <div class="text-danger small" >
+          <div *ngIf="carForm.value.category==='Odaberite kategoriju automobila'">Opcija mora biti odabrana</div>
+      </div>
+    </div>
+    <div class="form-floating form-floating-sm mt-1">
+      <select class="form-select " formControlName="fuel">
+        <option >Odaberite vrstu gorivo</option>
+        <option *ngFor="let option of fuelList" [ngValue]="option.value">{{option.name}}</option>
+      </select>
+      <div class="text-danger small" >
+        <div *ngIf="carForm.value.fuel==='Odaberite vrstu gorivo'">Opcija mora biti odabrana</div>
+    </div>
+  </div>
+  <div class="form-floating form-floating-sm mt-1">
+    <select class="form-select " formControlName="transmission">
+      <option >Odaberite vrstu prenosa</option>
+      <option *ngFor="let option of transmissionList" value="{{option.value}}">{{option.name}}</option>
+    </select>
+    <div class="text-danger small" >
+      <div *ngIf="carForm.value.transmission==='Odaberite vrstu prenosa'">Opcija mora biti odabrana</div>
+  </div>
+  </div>
+  <div class="form-floating form-floating-sm mt-1">
+    <input class="form-check-input" type="checkbox" formControlName="is_available" (change)="onCheckChange($event)" [checked]="carForm.value.is_available">{{msgc}}
+    <div class="text-danger small" >
+      <div >{{message}}</div>
+  </div>
+  
+  </div>
+        <div class="mt-4">
+            <input type="submit" value="Azuriraj automobil" class="btn btn-sm btn-primary me-2"
+            [disabled]="
+            carForm.value.category==='Odaberite kategoriju automobila' ||
+            carForm.value.fuel==='Odaberite vrstu gorivo' ||
+            carForm.value.transmission==='Odaberite vrstu prenosa' ||
+            carForm.invalid">
+            <a class="btn btn-sm btn-primary" routerLink="../../">Odustani</a>
+        </div>
+    </form>
+    </div>
+    </div>
+    </div>

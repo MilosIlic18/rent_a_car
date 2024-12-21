@@ -1,0 +1,96 @@
+<section class="h-100" >
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+              class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registrujte se</h3>
+  
+              <form class="px-md-2" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-floating mt-1">
+                    <input class="form-control" name="firstname" #firstname="ngModel" ngModel placeholder="firstname" required pattern=".{4,}">
+                    <label for="">Ime</label>
+                    <div class="text-danger small" *ngIf="firstname.touched && firstname.invalid">
+                        <div *ngIf="firstname.errors?.['required']">Polje ime mora biti popunjeno</div>
+                        <div *ngIf="firstname.errors?.['pattern']">Polje ime ne sme biti krace od cetiri karaktera</div>
+                    </div>
+                </div>
+                <div class="form-floating mt-1">
+                    <input class="form-control" name="lastname" #lastname="ngModel" ngModel placeholder="lastname" required pattern=".{4,}">
+                    <label for="">Prezime</label>
+                    <div class="text-danger small" *ngIf="lastname.touched && lastname.invalid">
+                        <div *ngIf="lastname.errors?.['required']">Polje ime mora biti popunjeno</div>
+                        <div *ngIf="lastname.errors?.['pattern']">Polje ime ne sme biti krace od cetiri karaktera</div>
+                    </div>
+                </div>
+                <div class="form-floating mt-1">
+                    <input class="form-control" name="uid" #uid="ngModel" ngModel placeholder="lastname" required pattern="[0-9]{13}">
+                    <label for="">JMBG</label>
+                    <div class="text-danger small" *ngIf="uid.touched && uid.invalid">
+                        <div *ngIf="uid.errors?.['required']">Polje jmbg mora biti popunjeno</div>
+                        <div *ngIf="uid.errors?.['pattern']">Polje jmbg mora imati tacno 13 karaktera</div>
+                    </div>
+                    <div class="text-danger small">{{messageUid}}</div>
+                </div>
+                <div class="form-floating mt-1">
+                    <input class="form-control" name="email" #email="ngModel" ngModel placeholder="email" required type='email' pattern=".+@gmail.com$">
+                    <label for="">Email</label>
+                    <div class="text-danger small" *ngIf="email.touched && email.invalid">
+                        <div *ngIf="email.errors?.['required']">Polje email mora biti popunjeno</div>
+                        <div *ngIf="email.errors?.['pattern']">Polje email mora da bude u formatu gmail adrese</div>
+                    </div>
+                    <div class="text-danger small">{{messageEmail}}</div>
+                </div>
+                <div class="form-floating mt-1">
+                    <input class="form-control" name="phone" #phone="ngModel" ngModel placeholder="phone" required pattern="[0-9]{10}">
+                    <label for="">Telefon</label>
+                    <div class="text-danger small" *ngIf="phone.touched && phone.invalid">
+                        <div *ngIf="phone.errors?.['required']">Polje telefon mora biti popunjeno</div>
+                        <div *ngIf="phone.errors?.['pattern']">Polje telefon mora da bude u formatu telefona (0648765653)</div>
+                    </div>
+                </div>
+                <div class="mt-1">
+                    <div class="input-group input-group-sm">
+                        <div class="form-floating ">
+                            <input class="form-control" [type]="changetype?'password':'text'" name="password" #password="ngModel" ngModel placeholder="password" required pattern=".{4,}">
+                            <label for="">Lozinka</label>
+                        </div>
+        
+                        <button type="button" class="btn btn-sm btn-primary" (click)="psw()"><i [ngClass]="visible? 'bi bi-eye-slash' : 'bi bi-eye'" > </i></button>
+                
+                    </div>
+                   <div class="text-danger small" *ngIf="password.touched && password.invalid">
+                        <div *ngIf="password.errors?.['required']">Polje lozinka mora biti popunjeno</div>
+                        <div *ngIf="password.errors?.['pattern']">Polje lozinka ne sme biti krace od cetiri karaktera</div>
+                    </div>
+                </div>
+                <div class="mt-1">
+                    <div class="input-group input-group-sm">
+                        <div class="form-floating ">
+                            <input class="form-control" [type]="changetype1?'password':'text'" name="repassword" #repassword="ngModel" ngModel placeholder="password" required pattern=".{4,}">
+                            <label for="">Ponovite lozinka</label>
+                        </div>
+        
+                        <button type="button" class="btn btn-sm btn-primary" (click)="psw1()"><i [ngClass]="visible1? 'bi bi-eye-slash' : 'bi bi-eye'" > </i></button>
+                    </div>
+                   <div class="text-danger small" *ngIf="repassword.touched && repassword.invalid">
+                        <div *ngIf="repassword.errors?.['required']">Polje lozinka mora biti popunjeno</div>
+                        <div *ngIf="repassword.errors?.['pattern']">Polje lozinka ne sme biti krace od cetiri karaktera</div>
+                        
+                    </div>
+                    <div class="text-danger small">{{messagePassword}}</div>
+                </div>
+  
+                <button type="submit" class="btn btn-primary btn-sm mb-1 mt-1" [disabled]="f.invalid">Registrujte se</button><br/>
+                <a routerLink="../">Imate nalog</a>
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
